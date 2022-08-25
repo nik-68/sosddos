@@ -15,7 +15,8 @@ os.system("clear")
 print("""\033[93m
              __   ANONYMOUS   __
 """)
-           
+time.sleep(3)
+os.system("clear")           
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random
 from urllib.parse import urlparse
@@ -33,7 +34,7 @@ def countdown(t):
             stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack status => " + str((until - datetime.datetime.now()).total_seconds()) + " sec left ")
         else:
             stdout.flush()
-            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
+            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !\n")
             return
 
 #region get
@@ -467,12 +468,12 @@ def clear():
 def title():
     #sys.stdout.write("\x1b]2;Karma | User: root\x07")
    
-    stdout.write("             "+Fore.RED            +"        ══╦═════════════════════════════════╦══\n")
-    stdout.write("             \x1b[38;2;255;0;0m╔═════════╩═════════════════════════════════╩═════════╗\n")
-    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m     Welcome To The Main Screen Of NosTa_Ddos\x1b[38;2;255;0;0m       ║\n")
-    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m        Type [help] to see the Commands    \x1b[38;2;255;0;0m         ║\n")
-    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m       Contact Dev - Telegram @CursedCyber\x1b[38;2;255;0;0m          ║\n")
-    stdout.write("             \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
+    stdout.write(" "+Fore.RED            +"        ══╦═════════════════════════════════╦══\n")
+    stdout.write(" \x1b[38;2;255;0;0m╔═════════╩═════════════════════════════════╩═════════╗\n")
+    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m Welcome Ddos\x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m Type [help] \x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m  ANONYMOUS  \x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
     stdout.write("\n")
 
 def command():
