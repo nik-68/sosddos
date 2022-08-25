@@ -30,8 +30,17 @@ try:
   from pystyle import Center, Anime, Colors, Colorate
 except:
   os.system('pip install pystyle')
-os.system('clear') 
 
+os.system('clear')
+Write.Print('   Trạng Thái = Done.. '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('╔═══> @TCM: Key Của Mày: KgtH2-UiYTg-TohS-RaHs '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Liên Hệ Facebook: https://www.facebook.com/profile.php?id=100008095299935  '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Ib Anh Xóa Bot Cho  '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('                               ╔═══> Trần Công Minh DEPTRY <═══╗'+'\n',Colors.red_to_blue,interval=0.03) 
+Write.Print('                               ╔═══> Đang Khởi Chạy......  <═══╗'+'\n',Colors.red_to_blue,interval=0.03)
+sleep(3)
 # -*- coding: utf-8 -*-
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random
@@ -483,13 +492,17 @@ def clear():
 
 def title():
     #sys.stdout.write("\x1b]2;Karma | User: root\x07")
-    stdout.write("\x1b[38;2;258;0;0m╔═════════╩═════════════════════════════════╩══════╗")
-    stdout.write("\x1b[38;2;258;0;0m\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;180m  Copyright: @TCM\x1b[38;2;255;0;0m     ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║\x1b[38;2;0;255;189m  Welcome To The DDOS ACTTACK Of TCM\x1b[38;2;255;0;0m ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m               \x1b[38;2;255;0;0m       ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m     ANONYMOUS   \x1b[38;2;255;0;0m     ║\n")
-    stdout.write("\x1b [38;2;255;0;0m╚═══════════════════════════════════════════════════╝\n")
+    stdout.write("                                                                                          \n")
+    stdout.write("                                 "+Fore.LIGHTBLUE_EX+"╔═╗╔╦╗╔═╗╔═╗╦ ╦╦                 \n")
+    stdout.write("                                 "+Fore.LIGHTMAGENTA_EX    +"║ ║║║║╠═╣║  ╠═╣║                \n")
+    stdout.write("                                 "+Fore.LIGHTRED_EX           +"╚═╝╩ ╩╩ ╩╚═╝╩ ╩╩               \n")
+    stdout.write("             \x1b[38;2;258;0;0m╔═════════╩═════════════════════════════════╩═════════╗")
+    stdout.write("             \x1b[38;2;258;0;0m\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;180m                  Copyright: @TCM\x1b[38;2;255;0;0m                   ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║\x1b[38;2;0;255;189m         Welcome To The DDOS ACTTACK Of TCM\x1b[38;2;255;0;0m          ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m            Nhập [help] Để Vào Commands    \x1b[38;2;255;0;0m         ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m             Liên Hệ - Zalo :339542972   \x1b[38;2;255;0;0m           ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
     stdout.write("\n")
 
 def command():
