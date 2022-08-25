@@ -85,10 +85,10 @@ def buildblock(size):
 	return(out_str)
 
 def usage():
-	print '---------------------------------------------------'
-	print 'USAGE: python hulk.py <url>'
-	print 'you can add "safe" after url, to autoshut after dos'
-	print '---------------------------------------------------'
+	print('---------------------------------------------------')
+	print('USAGE: python hulk.py <url>')
+	print('you can add "safe" after url, to autoshut after dos')
+	print('---------------------------------------------------')
 
 	
 #http request
@@ -141,10 +141,10 @@ class MonitorThread(threading.Thread):
 		previous=request_counter
 		while flag==0:
 			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
+				print("%d Requests Sent" % (request_counter)}
 				previous=request_counter
 		if flag==2:
-			print "\n-- HULK Attack Finished --"
+			print("\n-- HULK Attack Finished --")
 
 #execute 
 if len(sys.argv) < 2:
@@ -155,7 +155,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- HULK Attack Started --"
+		print("-- HULK Attack Started --")
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
