@@ -468,16 +468,16 @@ def clear():
 def title():
     #sys.stdout.write("\x1b]2;Karma | User: root\x07")
    
-    stdout.write(" "+Fore.RED            +"        ══╦═════════════════════════════════╦══\n")
-    stdout.write(" \x1b[38;2;255;0;0m╔═════════╩═════════════════════════════════╩═════════╗\n")
-    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m Welcome Ddos\x1b[38;2;255;0;0m ║\n")
-    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m Type [help] \x1b[38;2;255;0;0m ║\n")
-    stdout.write(" \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m  ANONYMOUS  \x1b[38;2;255;0;0m ║\n")
-    stdout.write(" \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
+    stdout.write(" "+Fore.RED            +"        ══╦═════════════════════╦══\n")
+    stdout.write(" \x1b[38;2;255;0;0m╔═════════╩═════════════════════╩═════════╗\n")
+    stdout.write(" \x1b[38;2;255;0;0m║        \x1b[38;2;0;255;189m Welcome Ddos\x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m║        \x1b[38;2;0;255;189m Type [help] \x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m║        \x1b[38;2;0;255;189m  ANONYMOUS  \x1b[38;2;255;0;0m ║\n")
+    stdout.write(" \x1b[38;2;255;0;0m╚═════════════════════════════════════════╝\n")
     stdout.write("\n")
 
 def command():
-    stdout.write(Fore.LIGHTMAGENTA_EX+"╔═══"+Fore.MAGENTA+"[""root"+Fore.LIGHTGREEN_EX+"@"+Fore.MAGENTA+"NosTa_Ddos"+Fore.MAGENTA+"]"+Fore.LIGHTMAGENTA_EX+"\n╚══\x1b[38;2;0;255;189m> "+Fore.WHITE)
+    stdout.write(Fore.LIGHTMAGENTA_EX+"╔═══"+Fore.LIGHTBLUE_EX+"[""root"+Fore.LIGHTBLUE_EX+" @"+Fore.LIGHTBLUE_EX+"DeDos"+Fore.MAGENTA+"]"+Fore.LIGHTMAGENTA_EX+"\n╚══\x1b[38;2;0;255;189m> "+Fore.WHITE)
     command = input()
     if command == "cls":
         clear()
