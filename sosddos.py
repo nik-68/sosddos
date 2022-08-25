@@ -29,24 +29,9 @@ from random import choice, randint, shuffle
 try:
   from pystyle import Center, Anime, Colors, Colorate
 except:
-  os.system('pip install pystyle') 
- 
-def clr():
-  if os.name == "nt":
-    os.system("cls")
-  else:
-    os.system('clear') 
+  os.system('pip install pystyle')
+os.system('clear') 
 
-clr()
-
-def clr():
-  if os.name == "nt":
-    os.system("cls")
-  else:
-    os.system('clear') 
-
-clr()
-logo()
 Write.Print('   Trạng Thái = Done.. '+'\n',Colors.white_to_red,interval=0.03)
 Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
 Write.Print('╔═══> @TCM: Key Của Mày: KgtH2-UiYTg-TohS-RaHs '+'\n',Colors.white_to_red,interval=0.03)
