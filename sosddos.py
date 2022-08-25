@@ -501,7 +501,7 @@ def title():
     stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;180m                  Copyright: @TCM\x1b[38;2;255;0;0m                   ║\n")
     stdout.write("\x1b[38;2;255;0;0m║\x1b[38;2;0;255;189m         Welcome To The DDOS ACTTACK Of TCM\x1b[38;2;255;0;0m          ║\n")
     stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m            Nhập [help] Để Vào Commands    \x1b[38;2;255;0;0m         ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m             Liên Hệ - Zalo :339542972   \x1b[38;2;255;0;0m           ║\n")
+    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m             ANONYMOUS   \x1b[38;2;255;0;0m           ║\n")
     stdout.write("\x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
     stdout.write("\n")
 
