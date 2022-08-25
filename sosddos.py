@@ -113,7 +113,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Response Code 500'
+			print('Response Code 500')
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -141,7 +141,7 @@ class MonitorThread(threading.Thread):
 		previous=request_counter
 		while flag==0:
 			if (previous+100<request_counter) & (previous<>request_counter):
-				print("%d Requests Sent"} % (request_counter)
+				print("%d Requests Sent") % (request_counter)
 				previous=request_counter
 		if flag==2:
 			print("\n-- HULK Attack Finished --")
