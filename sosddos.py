@@ -23,8 +23,6 @@ print("""\033[93m
                DDoS Layer7 (DDoS) 💥
 """)
 print()
-
-time.sleep(3)
 os.system("clear")
 import os
 import requests
