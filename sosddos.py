@@ -16,32 +16,6 @@ print("""\033[93m
              __   ANONYMOUS   __
 """)
            
-from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
-from calendar import weekheader
-from time import sleep
-import requests
-stt=0
-from time import sleep
-import requests
-import os, sys, requests, random
-import time
-from random import choice, randint, shuffle
-try:
-  from pystyle import Center, Anime, Colors, Colorate
-except:
-  os.system('pip install pystyle')
-
-os.system('clear')
-Write.Print('   Trạng Thái = Done.. '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
-Write.Print('╔═══> @TCM: Key Của Mày: KgtH2-UiYTg-TohS-RaHs '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('╔═══> @TCM: Liên Hệ Facebook: https://www.facebook.com/profile.php?id=100008095299935  '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('╔═══> @TCM: Ib Anh Xóa Bot Cho  '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
-Write.Print('                               ╔═══> Trần Công Minh DEPTRY <═══╗'+'\n',Colors.red_to_blue,interval=0.03) 
-Write.Print('                               ╔═══> Đang Khởi Chạy......  <═══╗'+'\n',Colors.red_to_blue,interval=0.03)
-sleep(3)
-# -*- coding: utf-8 -*-
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random
 from urllib.parse import urlparse
@@ -492,21 +466,17 @@ def clear():
 
 def title():
     #sys.stdout.write("\x1b]2;Karma | User: root\x07")
-    stdout.write("                                                                             \n")
-    stdout.write("                    "+Fore.LIGHTBLUE_EX+"╔═╗╔╦╗╔═╗╔═╗╦ ╦╦                 \n")
-    stdout.write("                    "+Fore.LIGHTMAGENTA_EX    +"║ ║║║║╠═╣║  ╠═╣║                \n")
-    stdout.write("                    "+Fore.LIGHTRED_EX           +"╚═╝╩ ╩╩ ╩╚═╝╩ ╩╩               \n")
-    stdout.write("\x1b[38;2;258;0;0m╔═════════╩═════════════════════════════════╩═════════╗")
-    stdout.write("\x1b[38;2;258;0;0m\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;180m                  Copyright: @TCM\x1b[38;2;255;0;0m                   ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║\x1b[38;2;0;255;189m         Welcome To The DDOS ACTTACK Of TCM\x1b[38;2;255;0;0m          ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m            Nhập [help] Để Vào Commands    \x1b[38;2;255;0;0m         ║\n")
-    stdout.write("\x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m             ANONYMOUS   \x1b[38;2;255;0;0m           ║\n")
-    stdout.write("\x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
+   
+    stdout.write("             "+Fore.RED            +"        ══╦═════════════════════════════════╦══\n")
+    stdout.write("             \x1b[38;2;255;0;0m╔═════════╩═════════════════════════════════╩═════════╗\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m     Welcome To The Main Screen Of NosTa_Ddos\x1b[38;2;255;0;0m       ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m        Type [help] to see the Commands    \x1b[38;2;255;0;0m         ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m       Contact Dev - Telegram @CursedCyber\x1b[38;2;255;0;0m          ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
     stdout.write("\n")
 
 def command():
-    stdout.write(Fore.LIGHTMAGENTA_EX+"╔═══"+Fore.LIGHTBLUE_EX+"[""root"+Fore.LIGHTBLUE_EX+" @"+Fore.LIGHTBLUE_EX+"TCM"+Fore.MAGENTA+"]"+Fore.LIGHTMAGENTA_EX+"\n╚══\x1b[38;2;0;255;189m> "+Fore.WHITE)
+    stdout.write(Fore.LIGHTMAGENTA_EX+"╔═══"+Fore.MAGENTA+"[""root"+Fore.LIGHTGREEN_EX+"@"+Fore.MAGENTA+"NosTa_Ddos"+Fore.MAGENTA+"]"+Fore.LIGHTMAGENTA_EX+"\n╚══\x1b[38;2;0;255;189m> "+Fore.WHITE)
     command = input()
     if command == "cls":
         clear()
@@ -521,9 +491,9 @@ def command():
     elif command == "exit":
         exit()
     elif command == "credit":
-        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Developer          "+Fore.RED+": \x1b[38;2;0;255;189mMINH\n")
-        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"UI Design          "+Fore.RED+": \x1b[38;2;0;255;189mTCM\n")
-        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Methods And Tools  "+Fore.RED+": \x1b[38;2;0;255;189mTCM\n")
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Developer          "+Fore.RED+": \x1b[38;2;0;255;189mNosTa\n")
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"UI Design          "+Fore.RED+": \x1b[38;2;0;255;189mCC_Team\n")
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Methods And Tools  "+Fore.RED+": \x1b[38;2;0;255;189mCursedCyber\n")
     elif command == "cfb":
         target, thread, t = get_info()
         timer = threading.Thread(target=countdown, args=(t,))
