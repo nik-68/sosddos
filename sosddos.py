@@ -70,11 +70,11 @@ def menu2():
     {Fore.RESET} ''')
 
 global url, time, file
-url     =     input(f'{Fore.LIGHTGREEN_EX}╰─────| ССЫЛКА URL FOR ATTACK |──────> {Fore.BLUE}')
+url     =     input(f'{Fore.LIGHTGREEN_EX}╰─────| ССЫЛКА URL |───> {Fore.BLUE}')
 print(f'')
-time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING ATTACK |──────> {Fore.BLUE} '))
+time    = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ВРЕМЯ TIMEING ATTACK |───> {Fore.BLUE} '))
 print(f'')
-threads = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ПОТОКИ [800] THREAD |──────> {Fore.BLUE}'))
+threads = int(input(f'{Fore.LIGHTGREEN_EX}╰─────| ПОТОКИ [800] THREAD |───> {Fore.BLUE}'))
 print('')
 
 loop = tqdm(total = 1000, position=0, leave=False)
