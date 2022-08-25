@@ -32,15 +32,6 @@ except:
   os.system('pip install pystyle')
 os.system('clear') 
 
-Write.Print('   Trạng Thái = Done.. '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
-Write.Print('╔═══> @TCM: Key Của Mày: KgtH2-UiYTg-TohS-RaHs '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('╔═══> @TCM: Liên Hệ Facebook: https://www.facebook.com/profile.php?id=100008095299935  '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('╔═══> @TCM: Ib Anh Xóa Bot Cho  '+'\n',Colors.white_to_red,interval=0.03)
-Write.Print('======================================================================================================='+'\n',Colors.red_to_yellow,interval=0.03)
-Write.Print('                               ╔═══> Trần Công Minh DEPTRY <═══╗'+'\n',Colors.red_to_blue,interval=0.03) 
-Write.Print('                               ╔═══> Đang Khởi Chạy......  <═══╗'+'\n',Colors.red_to_blue,interval=0.03)
-sleep(10)
 # -*- coding: utf-8 -*-
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random
